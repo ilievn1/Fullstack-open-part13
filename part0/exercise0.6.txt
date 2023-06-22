@@ -1,0 +1,9 @@
+sequenceDiagram
+    participant browser
+    participant server
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+    activate server
+    Note right of browser: Via code inside spa.js,following processes happen before server response:<br/>1. note payload to JSON <br/>2. note added to notes list <br/> 3. notes get rerendered <br/>4. new note sent to server
+    server-->>browser: Server confirms resource creation status code 201
+    deactivate server
