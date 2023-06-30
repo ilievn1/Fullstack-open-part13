@@ -26,9 +26,9 @@ const App = () => {
   }
 
   const askNumberUpdate = () => {
-    const replace = window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)
+    const doReplace = window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)
 
-    if (replace) {
+    if (doReplace) {
       const personObj = persons.find(p => p.name.toLowerCase() === newName.toLowerCase())
 
       const changedNumber = { ...personObj, number: newNumber }
@@ -66,6 +66,14 @@ const App = () => {
           setNewNumber('')
           setNotification(
             `Added '${newName}'`
+          )
+          setTimeout(() => {
+            setNotification(null)
+          }, 3000)
+        })
+        .catch(err => {
+          setNotification(
+            `${err.response.data.error}`
           )
           setTimeout(() => {
             setNotification(null)
