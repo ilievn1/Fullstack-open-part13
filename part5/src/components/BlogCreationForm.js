@@ -32,17 +32,17 @@ const BlogCreationForm = ({ handleBlogCreate }) => {
       <form onSubmit={handleCreate} role='form'>
         <div>
             title:
-          <input ref={titleRef}/>
+          <input id='titleInputField' ref={titleRef}/>
         </div>
         <div>
             author:
-          <input ref={authorRef}/>
+          <input id='authorInputField' ref={authorRef}/>
         </div>
         <div>
             url:
-          <input ref={urlRef}/>
+          <input id='urlInputField' ref={urlRef}/>
         </div>
-        <button type="submit">create</button>
+        <button id='create-btn' type="submit">create</button>
       </form>
     </div>
   )
