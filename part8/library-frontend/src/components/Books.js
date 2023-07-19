@@ -1,8 +1,10 @@
 import { useQuery } from "@apollo/client";
 import { ALL_BOOKS } from "../queries";
+import { useState } from "react";
 
 const Books = (props) => {
   const result = useQuery(ALL_BOOKS, { skip: !props.show });
+  const [selectedGenre, setSelectedGenre] = useState(undefined);
 
   if (!props.show) {
     return null;
@@ -10,10 +12,11 @@ const Books = (props) => {
   if (result.loading) {
     return <div>loading...</div>;
   }
-    console.log(result);
+  const allBooks = result.data.allBooks;
+  const filteredBooks = allBooks.filter(b => b.genres.includes(selectedGenre))
 
-  const books = result.data.allBooks;
-
+  const shownBooks = !selectedGenre ? allBooks : filteredBooks;
+  const distinctGenres = [...new Set(allBooks.flatMap( b => b.genres))]
   return (
     <div>
       <h2>books</h2>
@@ -25,7 +28,7 @@ const Books = (props) => {
             <th>author</th>
             <th>published</th>
           </tr>
-          {books.map((a) => (
+          {shownBooks.map((a) => (
             <tr key={a.title}>
               <td>{a.title}</td>
               <td>{a.author.name}</td>
@@ -34,8 +37,15 @@ const Books = (props) => {
           ))}
         </tbody>
       </table>
+
+      <h2>Filter by genre</h2>
+      <select value={selectedGenre} onChange={(e) => setSelectedGenre(e.target.value)} >
+        {distinctGenres.map((genre) => (
+          <option key={genre} value={genre}> {genre} </option>
+        ))}
+      </select>
     </div>
-  )
+  );
 }
 
 export default Books
