@@ -4,7 +4,6 @@ import AuthorForm from "./AuthorForm.js";
 
 const Authors = (props) => {
   const result = useQuery(ALL_AUTHORS, { skip: !props.show });
-  console.log(result);
 
   if (!props.show) {
     return null;

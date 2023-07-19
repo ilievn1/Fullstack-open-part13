@@ -8,7 +8,6 @@ const AuthorForm = ({authors}) => {
 
   const [changeYOB] = useMutation(EDIT_AUTHOR, {refetchQueries: [ { query: ALL_AUTHORS } ]});
   
-  console.log("checking if authorsArr has id", authors);
   const submit = (event) => {
     event.preventDefault();
 
