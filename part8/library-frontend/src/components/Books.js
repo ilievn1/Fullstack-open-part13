@@ -1,22 +1,28 @@
-import { useQuery } from "@apollo/client";
-import { ALL_BOOKS } from "../queries";
+import { useQuery, useLazyQuery } from "@apollo/client";
+import { ALL_BOOKS, BOOKS_BY_GENRE } from "../queries";
 import { useState } from "react";
 
 const Books = (props) => {
   const result = useQuery(ALL_BOOKS, { skip: !props.show });
   const [selectedGenre, setSelectedGenre] = useState(undefined);
+  const [booksByGenre, filteredBooks] = useLazyQuery(BOOKS_BY_GENRE);
 
   if (!props.show) {
     return null;
   }
-  if (result.loading) {
+  if (result.loading || filteredBooks.loading) {
     return <div>loading...</div>;
   }
   const allBooks = result.data.allBooks;
-  const filteredBooks = allBooks.filter(b => b.genres.includes(selectedGenre))
+  const distinctGenres = [...new Set(allBooks.flatMap((b) => b.genres))];
 
-  const shownBooks = !selectedGenre ? allBooks : filteredBooks;
-  const distinctGenres = [...new Set(allBooks.flatMap( b => b.genres))]
+  let shownBooks = !selectedGenre ? allBooks : filteredBooks.data.allBooks;
+
+  const handleGenreSelect = (event) => {
+    setSelectedGenre(event.target.value);
+    booksByGenre({ variables: { genre: event.target.value } });
+  };
+
   return (
     <div>
       <h2>books</h2>
@@ -39,13 +45,16 @@ const Books = (props) => {
       </table>
 
       <h2>Filter by genre</h2>
-      <select value={selectedGenre} onChange={(e) => setSelectedGenre(e.target.value)} >
+      <select value={selectedGenre} onChange={handleGenreSelect}>
         {distinctGenres.map((genre) => (
-          <option key={genre} value={genre}> {genre} </option>
+          <option key={genre} value={genre}>
+            {" "}
+            {genre}{" "}
+          </option>
         ))}
       </select>
     </div>
   );
-}
+};
 
-export default Books
+export default Books;
