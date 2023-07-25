@@ -22,6 +22,7 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
+    "@material-ui/icons": "^4.11.3",
     "@types/uuid": "^9.0.2",
     "cors": "^2.8.5",
     "express": "^4.18.2",

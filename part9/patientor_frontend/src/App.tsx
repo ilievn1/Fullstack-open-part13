@@ -4,13 +4,17 @@ import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import { Button, Divider, Container, Typography } from '@mui/material';
 
 import { apiBaseUrl } from "./constants";
-import { Patient } from "./types";
+import { Diagnosis, Patient } from "./types";
 
 import patientService from "./services/patients";
+import diagnosesService from "./services/diagnoses";
+
 import PatientListPage from "./components/PatientListPage";
+import PatientPage from "./components/PatientPage";
 
 const App = () => {
   const [patients, setPatients] = useState<Patient[]>([]);
+  const [diagnoses, setDiagnoses] = useState<Diagnosis[]>([]);
 
   useEffect(() => {
     void axios.get<void>(`${apiBaseUrl}/ping`);
@@ -22,6 +26,16 @@ const App = () => {
     void fetchPatientList();
   }, []);
   
+  useEffect(() => {
+    void axios.get<void>(`${apiBaseUrl}/ping`);
+
+    const fetchDiagnosesList = async () => {
+      const diagnoses = await diagnosesService.getAll();
+      setDiagnoses(diagnoses);
+    };
+    void fetchDiagnosesList();
+  }, []);
+
   return (
     <div className="App">
       <Router>
@@ -35,6 +49,7 @@ const App = () => {
           <Divider hidden />
           <Routes>
             <Route path="/" element={<PatientListPage patients={patients} setPatients={setPatients} />} />
+            <Route path="/patients/:id" element={<PatientPage diagnoses={diagnoses} />} />
           </Routes>
         </Container>
       </Router>
