@@ -1,0 +1,114 @@
+Script started on 2023-07-26 11:00:56+03:00 [TERM="xterm-256color" TTY="/dev/pts/3" COLUMNS="120" LINES="30"]
+[?2004h]0;ilievn1@DESKTOP-D0HHHGG: ~[01;32milievn1@DESKTOP-D0HHHGG[00m:[01;34m~[00m$ ^V[Kdocker container run -it ubuntu bash
+[?2004l
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+
+[1A[2K
+3153aa388d02: Pulling fs layer 
+[1B[1A[2K
+3153aa388d02: Downloading [>                                                  ]  305.5kB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [=>                                                 ]    924kB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [===>                                               ]  1.846MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [====>                                              ]  2.468MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [=====>                                             ]  3.087MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [======>                                            ]  4.004MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [=======>                                           ]  4.627MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [=========>                                         ]  5.548MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [==========>                                        ]  6.474MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [============>                                      ]    7.4MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [==============>                                    ]  8.334MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [===============>                                   ]  9.255MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [=================>                                 ]  10.18MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [==================>                                ]  11.11MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [====================>                              ]  12.04MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [=====================>                             ]  12.96MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [=======================>                           ]  13.89MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [=========================>                         ]  14.82MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [==========================>                        ]  15.76MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [============================>                      ]  16.68MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [=============================>                     ]  17.61MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [===============================>                   ]  18.54MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [================================>                  ]  19.45MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [==================================>                ]  20.38MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [====================================>              ]  21.29MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [=====================================>             ]  22.22MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [=======================================>           ]  23.15MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [========================================>          ]  24.07MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [==========================================>        ]  25.01MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [===========================================>       ]  25.94MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [=============================================>     ]  26.86MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [===============================================>   ]   27.8MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Downloading [================================================>  ]  28.72MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Verifying Checksum 
+[1B[1A[2K
+3153aa388d02: Download complete 
+[1B[1A[2K
+3153aa388d02: Extracting [>                                                  ]  327.7kB/29.53MB
+[1B[1A[2K
+3153aa388d02: Extracting [========>                                          ]  4.915MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Extracting [=============>                                     ]  8.192MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Extracting [==================>                                ]  11.14MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Extracting [============================>                      ]  16.71MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Extracting [=====================================>             ]  22.28MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Extracting [===========================================>       ]  25.56MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Extracting [==============================================>    ]  27.53MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Extracting [=================================================> ]  29.16MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Extracting [==================================================>]  29.53MB/29.53MB
+[1B[1A[2K
+3153aa388d02: Pull complete 
+[1BDigest: sha256:0bced47fffa3361afa981854fcabcd4577cd43cebbb808cea2b1f33a3dd7f508
+Status: Downloaded newer image for ubuntu:latest
+[?2004h]0;root@1135136b1d30: /root@1135136b1d30:/# mkdir /usr/src/app
+[?2004l
+[?2004h]0;root@1135136b1d30: /root@1135136b1d30:/# mkdir /usr/src/app/app/indexj .js[1P[1P[1P[1P[1P[1@t[1@o[1@u[1@c[1@h
+[?2004l
+[?2004h]0;root@1135136b1d30: /root@1135136b1d30:/# [Kexit
+[?2004l
+exit
+[?2004h]0;ilievn1@DESKTOP-D0HHHGG: ~[01;32milievn1@DESKTOP-D0HHHGG[00m:[01;34m~[00m$ exit
+[?2004l
+exit
+
+Script done on 2023-07-26 11:02:59+03:00 [COMMAND_EXIT_CODE="0"]

@@ -1,0 +1,24 @@
+Script started on 2023-07-26 17:18:36+03:00 [TERM="xterm-256color" TTY="/dev/pts/6" COLUMNS="76" LINES="30"]
+ilievn1@DESKTOP-D0HHHGG:~$ docker exec -it 9c bash
+root@9c128aa22cff:/data# KEYS *
+bash: KEYS: command not found
+root@9c128aa22cff:/data# redis-cli
+127.0.0.1:6379> KEYS *
+1) "added_todos"
+127.0.0.1:6379> GET added_todos
+"2"
+127.0.0.1:6379> SET added_todos 9001
+OK
+127.0.0.1:6379> GET added_todos
+"9002"
+127.0.0.1:6379> DEL added_todos
+(integer) 1
+127.0.0.1:6379> GET added_todos
+"1"
+127.0.0.1:6379> exit
+root@9c128aa22cff:/data# exit
+exit
+ilievn1@DESKTOP-D0HHHGG:~$ exit
+exit
+
+Script done on 2023-07-26 17:29:23+03:00 [COMMAND_EXIT_CODE="0"]

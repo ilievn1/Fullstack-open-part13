@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  backend:
+    image: bloglist-backend-prod
+    build:
+      context: ./backend/
+      dockerfile: prod.Dockerfile
+    volumes:
+      - ./backend:/usr/src/app
+    env_file:
+      - ./backend/.env
+
+  frontend:
+    image: bloglist-frontend-prod
+    build:
+      context: ./frontend/
+      dockerfile: prod.Dockerfile
+    volumes:
+      - ./frontend/:/usr/src/app
+
+  nginx:
+    image: nginx:latest
+    volumes: 
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - "frontend"
+      - "backend"
+    ports:
+      - 8080:80
+    container_name: reverse-proxy
