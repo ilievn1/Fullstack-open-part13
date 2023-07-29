@@ -57,6 +57,10 @@ Blog.init(
 
 Blog.sync();
 
+app.get("/", async (req, res) => {
+  res.send('<p>Hello, welcome to the server</p>');
+});
+
 app.get("/api/blogs", async (req, res) => {
   const blogs = await Blog.findAll();
   res.json(blogs);
