@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 
 const { sequelize } = require("../util/db");
-class Blog extends Model { }
+class Blog extends Model {}
 
 Blog.init(
   {
@@ -25,11 +25,18 @@ Blog.init(
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
+    year: {
+      type: DataTypes.INTEGER,
+      validate: {
+        min: 1991,
+        max: new Date().getFullYear(),
+      },
+    },
   },
   {
     sequelize,
     underscored: true,
-    timestamps: false,
+    //timestamps: false, // migration inits created_at and updated_at
     modelName: "blog",
   }
 );
