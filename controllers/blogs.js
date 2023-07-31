@@ -8,10 +8,6 @@ const blogFinder = async (req, res, next) => {
   next();
 };
 
-const userFinder = async (req, res, next) => {
-  req.loggedUser = await User.findByPk(req.decodedToken.id);
-  next();
-};
 
 router.get("/", async (req, res) => {
   const where = {};
@@ -40,7 +36,7 @@ router.get("/", async (req, res) => {
   res.json(blogs);
 });
 
-router.post("/", userFinder, async (req, res) => {
+router.post("/", async (req, res) => {
   const blog = await Blog.create({ ...req.body, userId: req.loggedUser.id });
   return res.json(blog);
 });
@@ -55,7 +51,7 @@ router.put("/:id", blogFinder, async (req, res) => {
   }
 });
 
-router.delete("/:id", blogFinder, userFinder, async (req, res) => {
+router.delete("/:id", blogFinder, async (req, res) => {
   if (!req.blog) {
     res.status(404).end();
   } else if (req.blog.userId !== req.loggedUser.id) {
